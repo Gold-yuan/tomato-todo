@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git:*)",
+      "Bash(find:*)",
+      "Bash(.specify/scripts/bash/:*)",
+      "Bash(.specify/scripts/bash/check-prerequisites.sh:*)"
+    ]
+  }
+}
