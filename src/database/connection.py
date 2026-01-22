@@ -86,40 +86,7 @@ def init_database():
     # 创建所有表
     Base.metadata.create_all(bind=engine)
 
-    # 预置默认配置
-    _seed_default_preferences()
-
-
-def _seed_default_preferences():
-    """
-    预置默认用户偏好配置
-
-    如果配置不存在则创建，存在则跳过
-    """
-    from models import UserPreferences
-    from services import PreferencesService
-    import json
-
-    session = get_session()
-    try:
-        prefs_service = PreferencesService(session)
-
-        # 检查是否已有配置
-        existing = prefs_service.get_all_preferences()
-        if not existing:
-            # 预置默认配置
-            default_prefs = {
-                'work_duration': 1500,  # 25分钟
-                'break_duration': 300,  # 5分钟
-                'always_on_top': False,
-                'auto_start_break': True,
-                'theme': 'light'
-            }
-            prefs_service.set_preferences(default_prefs)
-            session.commit()
-
-    finally:
-        session.close()
+    print(f"✅ 数据库表已创建: {get_db_path()}")
 
 
 def get_db_path() -> str:

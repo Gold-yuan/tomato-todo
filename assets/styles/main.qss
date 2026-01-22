@@ -1,0 +1,278 @@
+/*
+番茄时钟和TodoList桌面小组件 - 主样式表
+
+扁平化、去锐利化、圆角8px、柔和阴影
+*/
+
+/* ==================== 全局样式 ==================== */
+* {
+    font-family: "Microsoft YaHei", "PingFang SC", "Heiti SC", sans-serif;
+}
+
+QWidget {
+    background-color: #F5F6FA;
+    color: #2C3E50;
+}
+
+/* ==================== 按钮 ==================== */
+QPushButton {
+    background-color: #E74C3C;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+QPushButton:hover {
+    background-color: #C0392B;
+}
+
+QPushButton:pressed {
+    background-color: #A93226;
+}
+
+QPushButton:disabled {
+    background-color: #BDC3C7;
+    color: #ECF0F1;
+}
+
+/* 停止按钮特殊样式 */
+QPushButton#stopButton {
+    background-color: #95A5A6;
+}
+
+QPushButton#stopButton:hover {
+    background-color: #7F8C8D;
+}
+
+/* 设置按钮特殊样式 */
+QPushButton#setButton {
+    background-color: #3498DB;
+}
+
+QPushButton#setButton:hover {
+    background-color: #2980B9;
+}
+
+/* ==================== 番茄时钟组件 ==================== */
+PomodoroWidget {
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    border: 2px solid #E74C3C;
+}
+
+/* LCD数字显示 */
+QLCDNumber {
+    background-color: #F5F6FA;
+    color: #2C3E50;
+    border: 2px solid #E74C3C;
+    border-radius: 8px;
+    font-size: 24px;
+}
+
+/* 模式标签 */
+QLabel#modeLabel {
+    font-size: 16px;
+    font-weight: bold;
+    color: #E74C3C;
+    padding: 5px;
+}
+
+QLabel#modeLabel[breakMode="true"] {
+    color: #27AE60;
+}
+
+/* ==================== TodoList组件 ==================== */
+TodoWidget {
+    background-color: #FFFFFF;
+    border-radius: 12px;
+}
+
+/* 任务列表 */
+QListWidget#taskList {
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+
+QListWidget::item {
+    background-color: #FFFFFF;
+    border-radius: 6px;
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid #ECF0F1;
+}
+
+QListWidget::item:hover {
+    background-color: #F8F9FA;
+    border: 1px solid #E74C3C;
+}
+
+QListWidget::item:selected {
+    background-color: #FDEDEC;
+    border: 1px solid #E74C3C;
+}
+
+/* 已完成任务样式 */
+QListWidget::item[completed="true"] {
+    background-color: #F8F9FA;
+    color: #95A5A6;
+}
+
+QListWidget::item[completed="true"] QLabel {
+    text-decoration: line-through;
+}
+
+/* 任务输入框 */
+QLineEdit#taskInput {
+    background-color: #FFFFFF;
+    border: 2px solid #BDC3C7;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 14px;
+}
+
+QLineEdit#taskInput:focus {
+    border: 2px solid #E74C3C;
+}
+
+/* 分页控件 */
+QWidget#paginationWidget {
+    background-color: #F5F6FA;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+QPushButton#pageButton {
+    background-color: #3498DB;
+    min-width: 40px;
+}
+
+QPushButton#pageButton:disabled {
+    background-color: #BDC3C7;
+}
+
+QLabel#pageLabel {
+    font-size: 14px;
+    color: #2C3E50;
+    padding: 5px 15px;
+}
+
+/* ==================== 主窗口 ==================== */
+QMainWindow {
+    background-color: #F5F6FA;
+}
+
+/* ==================== 滚动条 ==================== */
+QScrollBar:vertical {
+    background-color: #F5F6FA;
+    width: 12px;
+    border-radius: 6px;
+}
+
+QScrollBar::handle:vertical {
+    background-color: #BDC3C7;
+    border-radius: 6px;
+    min-height: 30px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background-color: #95A5A6;
+}
+
+QScrollBar::add-line:vertical,
+QScrollBar::sub-line:vertical {
+    background: none;
+}
+
+QScrollBar:horizontal {
+    background-color: #F5F6FA;
+    height: 12px;
+    border-radius: 6px;
+}
+
+QScrollBar::handle:horizontal {
+    background-color: #BDC3C7;
+    border-radius: 6px;
+    min-width: 30px;
+}
+
+QScrollBar::handle:horizontal:hover {
+    background-color: #95A5A6;
+}
+
+QScrollBar::add-line:horizontal,
+QScrollBar::sub-line:horizontal {
+    background: none;
+}
+
+/* ==================== 右键菜单 ==================== */
+QMenu {
+    background-color: #FFFFFF;
+    border: 1px solid #BDC3C7;
+    border-radius: 8px;
+    padding: 5px;
+}
+
+QMenu::item {
+    padding: 8px 20px;
+    border-radius: 4px;
+}
+
+QMenu::item:selected {
+    background-color: #FDEDEC;
+    color: #E74C3C;
+}
+
+QMenu::separator {
+    height: 1px;
+    background-color: #ECF0F1;
+    margin: 5px 10px;
+}
+
+/* ==================== 工具提示 ==================== */
+QToolTip {
+    background-color: #34495E;
+    color: #ECF0F1;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    font-size: 12px;
+}
+
+/* ==================== 对话框 ==================== */
+QDialog {
+    background-color: #FFFFFF;
+    border-radius: 12px;
+}
+
+QDialog QLabel {
+    color: #2C3E50;
+}
+
+QDialog QPushButton {
+    min-width: 80px;
+    min-height: 30px;
+}
+
+/* ==================== 柔和阴影效果 ==================== */
+/* 柔和阴影类（可以在代码中设置ObjectName） */
+QWidget[shadow="true"] {
+    /* 使用box-shadow效果（需要在代码中实现） */
+    /* QSS本身不支持box-shadow，需要使用QGraphicsEffect */
+}
+
+/* ==================== 响应式设计 ==================== */
+/* 高DPI支持 */
+@media (min-resolution: 120dpi) {
+    QPushButton {
+        padding: 12px 24px;
+        font-size: 15px;
+    }
+
+    QLabel#modeLabel {
+        font-size: 18px;
+    }
+}

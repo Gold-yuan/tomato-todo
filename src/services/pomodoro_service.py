@@ -4,6 +4,7 @@
 封装番茄时钟的业务逻辑
 """
 from typing import Optional, Dict
+from datetime import datetime
 from sqlalchemy.orm import Session
 from database.repositories import PomodoroRepository
 from models import PomodoroTimer
@@ -50,8 +51,19 @@ class PomodoroService:
         if current and current.status == 'running':
             raise RuntimeError("时钟已在运行中")
 
+        # 如果有已停止的计时器，复用它
+        if current and current.status == 'stopped':
+            current.mode = mode
+            current.duration_seconds = duration
+            current.remaining_seconds = duration
+            current.status = 'running'
+            current.start_time = datetime.now()
+            current.last_update = datetime.now()
+            saved_timer = self.repository.save_timer(current)
+            self.session.flush()
+            return saved_timer
+
         # 创建新计时器
-        from datetime import datetime
         timer = PomodoroTimer(
             mode=mode,
             duration_seconds=duration,
@@ -61,7 +73,9 @@ class PomodoroService:
             last_update=datetime.now()
         )
 
-        return self.repository.save_timer(timer)
+        saved_timer = self.repository.save_timer(timer)
+        self.session.flush()
+        return saved_timer
 
     def pause_timer(self) -> PomodoroTimer:
         """
@@ -79,7 +93,9 @@ class PomodoroService:
 
         timer.status = 'paused'
         timer.last_update = datetime.now()
-        return self.repository.save_timer(timer)
+        saved_timer = self.repository.save_timer(timer)
+        self.session.flush()  # 确保状态立即更新
+        return saved_timer
 
     def resume_timer(self) -> PomodoroTimer:
         """
@@ -96,13 +112,14 @@ class PomodoroService:
             raise RuntimeError("时钟未暂停")
 
         # 计算从暂停到现在经过的时间
-        from datetime import datetime
         elapsed = int((datetime.now() - timer.last_update).total_seconds())
         timer.remaining_seconds = max(0, timer.remaining_seconds - elapsed)
         timer.status = 'running'
         timer.last_update = datetime.now()
 
-        return self.repository.save_timer(timer)
+        saved_timer = self.repository.save_timer(timer)
+        self.session.flush()
+        return saved_timer
 
     def stop_timer(self) -> PomodoroTimer:
         """
@@ -116,10 +133,11 @@ class PomodoroService:
             timer.status = 'stopped'
             timer.remaining_seconds = timer.duration_seconds
             timer.last_update = datetime.now()
-            return self.repository.save_timer(timer)
+            saved_timer = self.repository.save_timer(timer)
+            self.session.flush()
+            return saved_timer
         else:
             # 如果没有计时器，创建一个停止的
-            from datetime import datetime
             timer = PomodoroTimer(
                 mode='work',
                 duration_seconds=1500,
@@ -127,7 +145,9 @@ class PomodoroService:
                 status='stopped',
                 last_update=datetime.now()
             )
-            return self.repository.save_timer(timer)
+            saved_timer = self.repository.save_timer(timer)
+            self.session.flush()
+            return saved_timer
 
     def tick(self) -> Optional[PomodoroTimer]:
         """
@@ -163,9 +183,12 @@ class PomodoroService:
             timer.start_time = None
 
             self.repository.save_timer(timer)
+            self.session.flush()
             return None  # 倒计时结束
 
-        return self.repository.save_timer(timer)
+        saved_timer = self.repository.save_timer(timer)
+        self.session.flush()
+        return saved_timer
 
     def get_current_timer(self) -> Optional[PomodoroTimer]:
         """

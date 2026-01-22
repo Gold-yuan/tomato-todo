@@ -90,41 +90,41 @@
 
 **注意: 先编写这些测试, 确保在实施前它们失败**
 
-- [ ] T027 [P] [US1] 在 tests/unit/services/test_pomodoro_service.py 中编写PomodoroService.start_timer的单元测试
-- [ ] T028 [P] [US1] 在 tests/unit/services/test_pomodoro_service.py 中编写PomodoroService.pause_timer的单元测试
-- [ ] T029 [P] [US1] 在 tests/unit/services/test_pomodoro_service.py 中编写PomodoroService.resume_timer的单元测试
-- [ ] T030 [P] [US1] 在 tests/unit/services/test_pomodoro_service.py 中编写PomodoroService.stop_timer的单元测试
-- [ ] T031 [P] [US1] 在 tests/unit/services/test_pomodoro_service.py 中编写PomodoroService.tick的单元测试(倒计时更新和归零处理)
-- [ ] T032 [P] [US1] 在 tests/integration/test_pomodoro_workflow.py 中编写完整番茄时钟工作流的集成测试(设置→开始→暂停→继续→完成→自动切换)
+- [X] T027 [P] [US1] 在 tests/unit/services/test_pomodoro_service.py 中编写PomodoroService.start_timer的单元测试
+- [X] T028 [P] [US1] 在 tests/unit/services/test_pomodoro_service.py 中编写PomodoroService.pause_timer的单元测试
+- [X] T029 [P] [US1] 在 tests/unit/services/test_pomodoro_service.py 中编写PomodoroService.resume_timer的单元测试
+- [X] T030 [P] [US1] 在 tests/unit/services/test_pomodoro_service.py 中编写PomodoroService.stop_timer的单元测试
+- [X] T031 [P] [US1] 在 tests/unit/services/test_pomodoro_service.py 中编写PomodoroService.tick的单元测试(倒计时更新和归零处理)
+- [X] T032 [P] [US1] 在 tests/integration/test_pomodoro_workflow.py 中编写完整番茄时钟工作流的集成测试(设置→开始→暂停→继续→完成→自动切换)
 
 ### 用户故事 1 的实施
 
 #### UI组件
 
-- [ ] T033 [P] [US1] 在 src/views/pomodoro_widget.py 中创建番茄时钟UI组件(QLCD数字显示、开始/暂停图标、停止图标、布局)
-- [ ] T034 [P] [US1] 在 src/views/dialogs/time_set_dialog.py 中创建时间设置对话框(数字键盘输入、确认/取消按钮)
-- [ ] T035 [P] [US1] 在 src/views/timeout_dialog.py 中创建全屏倒计时结束提示对话框(渐隐动画、2秒定时器、点击/按键事件)
-- [ ] T036 [US1] 在 assets/styles/main.qss 中添加番茄时钟组件样式(扁平化、圆角、柔和阴影、番茄红#E74C3C主题色)
+- [X] T033 [P] [US1] 在 src/views/pomodoro_widget.py 中创建番茄时钟UI组件(QLCD数字显示、开始/暂停图标、停止图标、布局)
+- [X] T034 [P] [US1] 在 src/views/dialogs/time_set_dialog.py 中创建时间设置对话框(数字键盘输入、确认/取消按钮)
+- [X] T035 [P] [US1] 在 src/views/timeout_dialog.py 中创建全屏倒计时结束提示对话框(渐隐动画、2秒定时器、点击/按键事件)
+- [X] T036 [US1] 在 assets/styles/main.qss 中添加番茄时钟组件样式(扁平化、圆角、柔和阴影、番茄红#E74C3C主题色)
 
 #### 控制器层
 
-- [ ] T037 [US1] 在 src/controllers/pomodoro_controller.py 中实现PomodoroController(连接UI和Service,处理按钮点击、更新UI状态)
+- [X] T037 [US1] 在 src/controllers/pomodoro_controller.py 中实现PomodoroController(连接UI和Service,处理按钮点击、更新UI状态)
 
 #### 服务层实现
 
-- [ ] T038 [US1] 在 src/services/pomodoro_service.py 中实现start_timer方法(创建计时器、验证时长、保存到数据库、返回PomodoroTimer)
-- [ ] T039 [US1] 在 src/services/pomodoro_service.py 中实现pause_timer方法(更新状态为paused、保存last_update时间、返回PomodoroTimer)
-- [ ] T040 [US1] 在 src/services/pomodoro_service.py 中实现resume_timer方法(从暂停处继续、计算经过时间、返回PomodoroTimer)
-- [ ] T041 [US1] 在 src/services/pomodoro_service.py 中实现stop_timer方法(重置为初始状态、保存到数据库、返回PomodoroTimer)
-- [ ] T042 [US1] 在 src/services/pomodoro_service.py 中实现tick方法(每秒调用、减少remaining_seconds、处理归零、保存统计数据、自动切换模式)
-- [ ] T043 [US1] 在 src/services/pomodoro_service.py 中实现get_current_timer方法(从数据库获取当前计时器状态)
-- [ ] T044 [US1] 在 src/services/pomodoro_service.py 中实现get_stats方法(查询pomodoro_stats表、计算今日/本周/总数、返回统计字典)
+- [X] T038 [US1] 在 src/services/pomodoro_service.py 中实现start_timer方法(创建计时器、验证时长、保存到数据库、返回PomodoroTimer)
+- [X] T039 [US1] 在 src/services/pomodoro_service.py 中实现pause_timer方法(更新状态为paused、保存last_update时间、返回PomodoroTimer)
+- [X] T040 [US1] 在 src/services/pomodoro_service.py 中实现resume_timer方法(从暂停处继续、计算经过时间、返回PomodoroTimer)
+- [X] T041 [US1] 在 src/services/pomodoro_service.py 中实现stop_timer方法(重置为初始状态、保存到数据库、返回PomodoroTimer)
+- [X] T042 [US1] 在 src/services/pomodoro_service.py 中实现tick方法(每秒调用、减少remaining_seconds、处理归零、保存统计数据、自动切换模式)
+- [X] T043 [US1] 在 src/services/pomodoro_service.py 中实现get_current_timer方法(从数据库获取当前计时器状态)
+- [X] T044 [US1] 在 src/services/pomodoro_service.py 中实现get_stats方法(查询pomodoro_stats表、计算今日/本周/总数、返回统计字典)
 
 #### 应用入口
 
-- [ ] T045 [US1] 在 src/main.py 中创建应用主窗口(QMainWindow、设置无边框窗口属性、集成番茄时钟组件)
-- [ ] T046 [US1] 在 src/main.py 中实现单实例检测(调用single_instance.py、锁文件冲突时提示并退出)
-- [ ] T047 [US1] 在 src/main.py 中实现应用启动时的状态恢复(从数据库加载计时器状态、恢复UI显示)
+- [X] T045 [US1] 在 src/main.py 中创建应用主窗口(QMainWindow、设置无边框窗口属性、集成番茄时钟组件)
+- [X] T046 [US1] 在 src/main.py 中实现单实例检测(调用single_instance.py、锁文件冲突时提示并退出)
+- [X] T047 [US1] 在 src/main.py 中实现应用启动时的状态恢复(从数据库加载计时器状态、恢复UI显示)
 
 **检查点**: 此时, 用户故事 1 应该完全功能化且可独立测试
 
