@@ -32,7 +32,17 @@
       "Bash(.specify/scripts/bash/common.sh:*)",
       "Bash(.specify/scripts/bash/create-new-feature.sh:*)",
       "Bash(.specify/scripts/bash/update-agent-context:*)",
-      "Bash(.specify/scripts/bash/setup-plan.sh:*)"
+      "Bash(.specify/scripts/bash/setup-plan.sh:*)",
+      "Bash(poetry:*)",
+      "Bash(poetry install:*)",
+      "Bash(python -)",
+      "Bash(python3 -)",
+      "Bash(export:*)",
+      "Bash(/home/taifu/.local/bin/poetry:*)",
+      "Bash(/home/taifu/.local/bin/poetry install:*)",
+      "Bash(pkill:*)",
+      "Bash(/home/taifu/.local/bin/poetry source show:*)",
+      "Bash(/home/taifu/.local/bin/poetry source add:*)"
     ]
   }
 }

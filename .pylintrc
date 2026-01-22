@@ -1,0 +1,17 @@
+[MASTER]
+load-plugins=pylint_pyqt
+disable=C0103,C0114,C0115,R0903,R0904
+
+[FORMAT]
+max-line-length=100
+max-module-lines=100
+
+[DESIGN]
+max-args=10
+
+[MESSAGES CONTROL]
+# 禁用过于严格的检查
+disable=
+    missing-docstring,
+    too-few-public-methods,
+    too-many-arguments
