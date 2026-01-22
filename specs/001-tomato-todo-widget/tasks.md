@@ -21,11 +21,11 @@
 
 **目的**: 项目初始化和基本结构
 
-- [ ] T001 创建项目目录结构(src/models、src/views、src/controllers、src/services、src/database、src/utils、tests/unit、tests/integration、assets/styles)
-- [ ] T002 使用Poetry初始化Python 3.11项目并配置依赖项(pyproject.toml: PyQt6、SQLAlchemy、pytest、pytest-qt、pyinstaller)
-- [ ] T003 [P] 配置代码检查工具(pyproject.toml: pylint、black、flake8)
-- [ ] T004 [P] 创建资源文件目录结构(assets/icon.ico、assets/styles/main.qss)
-- [ ] T005 [P] 初始化Git仓库(.gitignore忽略__pycache__、*.pyc、.venv、dist、build、*.db)
+- [X] T001 创建项目目录结构(src/models、src/views、src/controllers、src/services、src/database、src/utils、tests/unit、tests/integration、assets/styles)
+- [X] T002 使用Poetry初始化Python 3.11项目并配置依赖项(pyproject.toml: PyQt6、SQLAlchemy、pytest、pytest-qt、pyinstaller)
+- [X] T003 [P] 配置代码检查工具(pyproject.toml: pylint、black、flake8)
+- [X] T004 [P] 创建资源文件目录结构(assets/icon.ico、assets/styles/main.qss)
+- [X] T005 [P] 初始化Git仓库(.gitignore忽略__pycache__、*.pyc、.venv、dist、build、*.db)
 
 ---
 
@@ -37,39 +37,39 @@
 
 ### 数据库层基础
 
-- [ ] T006 [P] 在 src/database/connection.py 中实现数据库连接管理(SQLAlchemy引擎、Session工厂、临时目录路径管理)
-- [ ] T007 [P] 在 src/database/__init__.py 中创建Base基类和引擎实例导出
-- [ ] T008 [P] 在 src/utils/constants.py 中定义应用常量(应用目录、数据库路径、锁文件路径、默认时长配置)
-- [ ] T009 [P] 在 src/utils/single_instance.py 中实现单实例管理(QLockFile文件锁、冲突检测)
-- [ ] T010 [P] 在 scripts/init_db.py 中创建数据库初始化脚本(创建表、预置配置)
+- [X] T006 [P] 在 src/database/connection.py 中实现数据库连接管理(SQLAlchemy引擎、Session工厂、临时目录路径管理)
+- [X] T007 [P] 在 src/database/__init__.py 中创建Base基类和引擎实例导出
+- [X] T008 [P] 在 src/utils/constants.py 中定义应用常量(应用目录、数据库路径、锁文件路径、默认时长配置)
+- [X] T009 [P] 在 src/utils/single_instance.py 中实现单实例管理(QLockFile文件锁、冲突检测)
+- [X] T010 [P] 在 scripts/init_db.py 中创建数据库初始化脚本(创建表、预置配置)
 
 ### 数据模型基础
 
-- [ ] T011 [P] 在 src/models/pomodoro_timer.py 中创建PomodoroTimer模型(id、mode、duration_seconds、remaining_seconds、status、start_time、last_update、created_at、updated_at)
-- [ ] T012 [P] 在 src/models/pomodoro_stats.py 中创建PomodoroStats模型(id、mode、duration_seconds、completed_at、date)
-- [ ] T013 [P] 在 src/models/todo_task.py 中创建TodoTask模型(id、content、is_completed、completed_at、created_at、updated_at)
-- [ ] T014 [P] 在 src/models/user_preferences.py 中创建UserPreferences模型(id、key、value、created_at、updated_at)
-- [ ] T015 [P] 在 src/models/__init__.py 中导出所有模型类
+- [X] T011 [P] 在 src/models/pomodoro_timer.py 中创建PomodoroTimer模型(id、mode、duration_seconds、remaining_seconds、status、start_time、last_update、created_at、updated_at)
+- [X] T012 [P] 在 src/models/pomodoro_stats.py 中创建PomodoroStats模型(id、mode、duration_seconds、completed_at、date)
+- [X] T013 [P] 在 src/models/todo_task.py 中创建TodoTask模型(id、content、is_completed、completed_at、created_at、updated_at)
+- [X] T014 [P] 在 src/models/user_preferences.py 中创建UserPreferences模型(id、key、value、created_at、updated_at)
+- [X] T015 [P] 在 src/models/__init__.py 中导出所有模型类
 
 ### 数据仓库层
 
-- [ ] T016 [P] 在 src/database/repositories/pomodoro_repository.py 中实现PomodoroRepository(获取/保存/更新计时器状态、统计查询)
-- [ ] T017 [P] 在 src/database/repositories/todo_repository.py 中实现TodoRepository(CRUD操作、分页查询、搜索)
-- [ ] T018 [P] 在 src/database/repositories/preferences_repository.py 中实现PreferencesRepository(获取/设置配置)
-- [ ] T019 [P] 在 src/database/repositories/__init__.py 中导出所有仓库类
+- [X] T016 [P] 在 src/database/repositories/pomodoro_repository.py 中实现PomodoroRepository(获取/保存/更新计时器状态、统计查询)
+- [X] T017 [P] 在 src/database/repositories/todo_repository.py 中实现TodoRepository(CRUD操作、分页查询、搜索)
+- [X] T018 [P] 在 src/database/repositories/preferences_repository.py 中实现PreferencesRepository(获取/设置配置)
+- [X] T019 [P] 在 src/database/repositories/__init__.py 中导出所有仓库类
 
 ### 服务层基础
 
-- [ ] T020 [P] 在 src/services/pomodoro_service.py 中实现PomodoroService框架(初始化、依赖注入)
-- [ ] T021 [P] 在 src/services/todo_service.py 中实现TodoService框架(初始化、依赖注入)
-- [ ] T022 [P] 在 src/services/preferences_service.py 中实现PreferencesService框架(初始化、依赖注入)
-- [ ] T023 [P] 在 src/services/__init__.py 中导出所有服务类
+- [X] T020 [P] 在 src/services/pomodoro_service.py 中实现PomodoroService框架(初始化、依赖注入)
+- [X] T021 [P] 在 src/services/todo_service.py 中实现TodoService框架(初始化、依赖注入)
+- [X] T022 [P] 在 src/services/preferences_service.py 中实现PreferencesService框架(初始化、依赖注入)
+- [X] T023 [P] 在 src/services/__init__.py 中导出所有服务类
 
 ### 测试基础
 
-- [ ] T024 [P] 在 tests/conftest.py 中配置pytest(fixture:内存数据库、测试Session、测试客户端)
-- [ ] T025 [P] 在 tests/conftest.py 中配置pytest-qt(qtbot、qtbot_strong、pytest_configure)
-- [ ] T026 [P] 在 tests/unit/test_database.py 中编写数据库连接和单实例管理的单元测试
+- [X] T024 [P] 在 tests/conftest.py 中配置pytest(fixture:内存数据库、测试Session、测试客户端)
+- [X] T025 [P] 在 tests/conftest.py 中配置pytest-qt(qtbot、qtbot_strong、pytest_configure)
+- [X] T026 [P] 在 tests/unit/test_database.py 中编写数据库连接和单实例管理的单元测试
 
 **检查点**: 基础就绪 - 现在可以开始并行实施用户故事
 

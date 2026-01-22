@@ -42,7 +42,8 @@
       "Bash(/home/taifu/.local/bin/poetry install:*)",
       "Bash(pkill:*)",
       "Bash(/home/taifu/.local/bin/poetry source show:*)",
-      "Bash(/home/taifu/.local/bin/poetry source add:*)"
+      "Bash(/home/taifu/.local/bin/poetry source add:*)",
+      "Bash(git rev-parse:*)"
     ]
   }
 }
