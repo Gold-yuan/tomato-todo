@@ -143,7 +143,7 @@ class TodoRepository:
 
         # 排序：未完成在前，已完成在后；同类别内按updated_at DESC排序
         query = query.order_by(
-            TodoTask.is_completed.desc(),
+            TodoTask.is_completed.asc(),  # False(0)在前, True(1)在后
             TodoTask.updated_at.desc()
         )
 
@@ -175,6 +175,6 @@ class TodoRepository:
         return self.session.query(TodoTask).filter(
             TodoTask.content.contains(keyword)
         ).order_by(
-            TodoTask.is_completed.desc(),
+            TodoTask.is_completed.asc(),  # False(0)在前, True(1)在后
             TodoTask.updated_at.desc()
         ).all()

@@ -43,7 +43,9 @@ class TodoService:
         if len(content) > MAX_TASK_CONTENT_LENGTH:
             raise ValueError(f"任务内容不能超过{MAX_TASK_CONTENT_LENGTH}个字符")
 
-        return self.repository.create(content.strip())
+        task = self.repository.create(content.strip())
+        self.session.flush()  # 确保ID立即可用
+        return task
 
     def update_task(self, task_id: int, content: str) -> TodoTask:
         """
@@ -68,7 +70,9 @@ class TodoService:
             raise ValueError(f"任务内容不能超过{MAX_TASK_CONTENT_LENGTH}个字符")
 
         try:
-            return self.repository.update(task_id, content.strip())
+            task = self.repository.update(task_id, content.strip())
+            self.session.flush()
+            return task
         except Exception:
             # 将SQLAlchemy的NoResultFound转换为业务异常
             raise NotFoundError(f"任务 {task_id} 不存在")
@@ -87,7 +91,9 @@ class TodoService:
             NotFoundError: 如果任务不存在
         """
         try:
-            return self.repository.delete(task_id)
+            result = self.repository.delete(task_id)
+            self.session.flush()
+            return result
         except Exception:
             raise NotFoundError(f"任务 {task_id} 不存在")
 
@@ -105,7 +111,9 @@ class TodoService:
             NotFoundError: 如果任务不存在
         """
         try:
-            return self.repository.toggle_completed(task_id)
+            task = self.repository.toggle_completed(task_id)
+            self.session.flush()  # 确保updated_at和completed_at更新
+            return task
         except Exception:
             raise NotFoundError(f"任务 {task_id} 不存在")
 

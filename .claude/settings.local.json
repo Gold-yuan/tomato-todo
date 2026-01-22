@@ -43,7 +43,15 @@
       "Bash(pkill:*)",
       "Bash(/home/taifu/.local/bin/poetry source show:*)",
       "Bash(/home/taifu/.local/bin/poetry source add:*)",
-      "Bash(git rev-parse:*)"
+      "Bash(git rev-parse:*)",
+      "Bash(pytest:*)",
+      "Bash(source:*)",
+      "Bash(python -m pytest:*)",
+      "Bash(python3:*)",
+      "Bash(pip install:*)",
+      "Bash(poetry env info:*)",
+      "Bash(poetry run pytest:*)",
+      "Bash(poetry run python:*)"
     ]
   }
 }

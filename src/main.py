@@ -9,10 +9,10 @@ from PyQt6.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QWidget
 from PyQt6.QtCore import Qt
 from PyQt6.QtGui import QIcon
 
-from database.connection import get_session
-from services import PomodoroService
-from views import PomodoroWidget
-from controllers import PomodoroController
+from database.connection import get_session, init_database
+from services import PomodoroService, TodoService
+from views import PomodoroWidget, TodoWidget
+from controllers import PomodoroController, TodoController
 from utils.single_instance import SingleInstanceManager
 from utils.constants import DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT
 
@@ -23,11 +23,15 @@ class TomatoTodoApp(QMainWindow):
     def __init__(self):
         super().__init__()
 
+        # 初始化数据库
+        init_database()
+
         # 初始化数据库会话
         self.session = get_session()
 
         # 初始化服务
         self.pomodoro_service = PomodoroService(self.session)
+        self.todo_service = TodoService(self.session)
 
         # 初始化UI
         self._init_ui()
@@ -41,7 +45,7 @@ class TomatoTodoApp(QMainWindow):
     def _init_ui(self):
         """初始化UI"""
         # 设置窗口属性
-        self.setWindowTitle("番茄时钟")
+        self.setWindowTitle("番茄时钟 & 待办清单")
         self.setMinimumSize(DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT)
 
         # 创建中央widget
@@ -53,13 +57,15 @@ class TomatoTodoApp(QMainWindow):
         main_layout.setContentsMargins(10, 10, 10, 10)
         main_layout.setSpacing(10)
 
-        # 创建番茄时钟组件
+        # 创建番茄时钟组件（上方，占30%空间）
         self.pomodoro_widget = PomodoroWidget()
-        main_layout.addWidget(self.pomodoro_widget)
+        self.pomodoro_widget.setMinimumHeight(200)
+        main_layout.addWidget(self.pomodoro_widget, stretch=3)
 
-        # TODO: 后续添加TodoList组件
-        # todo_widget = TodoWidget()
-        # main_layout.addWidget(todo_widget)
+        # 创建TodoList组件（下方，占70%空间）
+        self.todo_widget = TodoWidget()
+        self.todo_widget.setMinimumHeight(300)
+        main_layout.addWidget(self.todo_widget, stretch=7)
 
         central_widget.setLayout(main_layout)
 
@@ -78,14 +84,25 @@ class TomatoTodoApp(QMainWindow):
 
     def _init_controllers(self):
         """初始化控制器"""
+        # 番茄时钟控制器
         self.pomodoro_controller = PomodoroController(
             self.pomodoro_widget,
             self.pomodoro_service,
             self.session
         )
 
-        # 连接完成信号
+        # TodoList控制器
+        self.todo_controller = TodoController(
+            self.todo_widget,
+            self.todo_service,
+            self
+        )
+
+        # 连接番茄时钟完成信号
         self.pomodoro_controller.timer_completed.connect(self._on_timer_completed)
+
+        # 连接TodoList错误信号
+        self.todo_controller.error_occurred.connect(self._on_todo_error)
 
     def _load_application_state(self):
         """加载应用状态"""
@@ -103,6 +120,11 @@ class TomatoTodoApp(QMainWindow):
         """处理计时器完成"""
         # TODO: 后续可以添加通知、声音等
         print(f"计时器完成: {mode}")
+
+    def _on_todo_error(self, error_message: str):
+        """处理TodoList错误"""
+        # TODO: 可以显示错误提示对话框
+        print(f"TodoList错误: {error_message}")
 
     def closeEvent(self, event):
         """关闭事件：清理资源"""

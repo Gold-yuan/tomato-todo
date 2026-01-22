@@ -146,41 +146,41 @@
 
 **注意: 先编写这些测试, 确保在实施前它们失败**
 
-- [ ] T048 [P] [US2] 在 tests/unit/services/test_todo_service.py 中编写TodoService.create_task的单元测试
-- [ ] T049 [P] [US2] 在 tests/unit/services/test_todo_service.py 中编写TodoService.update_task的单元测试
-- [ ] T050 [P] [US2] 在 tests/unit/services/test_todo_service.py 中编写TodoService.delete_task的单元测试
-- [ ] T051 [P] [US2] 在 tests/unit/services/test_todo_service.py 中编写TodoService.toggle_completed的单元测试
-- [ ] T052 [P] [US2] 在 tests/unit/services/test_todo_service.py 中编写TodoService.get_tasks的单元测试(分页逻辑、排序逻辑)
-- [ ] T053 [P] [US2] 在 tests/integration/test_todo_workflow.py 中编写TodoList完整工作流的集成测试(创建→完成→取消完成→删除→修改→分页)
+- [X] T048 [P] [US2] 在 tests/unit/services/test_todo_service.py 中编写TodoService.create_task的单元测试
+- [X] T049 [P] [US2] 在 tests/unit/services/test_todo_service.py 中编写TodoService.update_task的单元测试
+- [X] T050 [P] [US2] 在 tests/unit/services/test_todo_service.py 中编写TodoService.delete_task的单元测试
+- [X] T051 [P] [US2] 在 tests/unit/services/test_todo_service.py 中编写TodoService.toggle_completed的单元测试
+- [X] T052 [P] [US2] 在 tests/unit/services/test_todo_service.py 中编写TodoService.get_tasks的单元测试(分页逻辑、排序逻辑)
+- [X] T053 [P] [US2] 在 tests/integration/test_todo_workflow.py 中编写TodoList完整工作流的集成测试(创建→完成→取消完成→删除→修改→分页)
 
 ### 用户故事 2 的实施
 
 #### UI组件
 
-- [ ] T054 [P] [US2] 在 src/views/todo_widget.py 中创建TodoList UI组件(QListWidget、输入框、滚动区域、分页控件)
-- [ ] T055 [P] [US2] 在 src/views/todo_widget.py 中实现自定义任务项QWidget(圆形完成图标、任务文本标签、截断显示、tooltip、高亮效果)
-- [ ] T056 [P] [US2] 在 src/views/todo_widget.py 中实现右键菜单(QMenu、删除/修改/标记完成选项)
-- [ ] T057 [P] [US2] 在 src/views/todo_widget.py 中实现分页控件(上一页/下一页按钮、页码显示)
-- [ ] T058 [US2] 在 src/views/todo_widget.py 中实现任务编辑功能(双击或右键菜单触发、行内编辑、回车保存、ESC取消)
-- [ ] T059 [US2] 在 assets/styles/main.qss 中添加TodoList组件样式(扁平化、圆角、悬停高亮、完成状态删除线)
+- [X] T054 [P] [US2] 在 src/views/todo_widget.py 中创建TodoList UI组件(QListWidget、输入框、滚动区域、分页控件)
+- [X] T055 [P] [US2] 在 src/views/todo_widget.py 中实现自定义任务项QWidget(圆形完成图标、任务文本标签、截断显示、tooltip、高亮效果)
+- [X] T056 [P] [US2] 在 src/views/todo_widget.py 中实现右键菜单(QMenu、删除/修改/标记完成选项)
+- [X] T057 [P] [US2] 在 src/views/todo_widget.py 中实现分页控件(上一页/下一页按钮、页码显示)
+- [X] T058 [US2] 在 src/views/todo_widget.py 中实现任务编辑功能(双击或右键菜单触发、行内编辑、回车保存、ESC取消)
+- [X] T059 [US2] 在 assets/styles/main.qss 中添加TodoList组件样式(扁平化、圆角、悬停高亮、完成状态删除线)
 
 #### 控制器层
 
-- [ ] T060 [US2] 在 src/controllers/todo_controller.py 中实现TodoController(连接UI和Service,处理回车、点击、右键、分页事件,更新UI)
+- [X] T060 [US2] 在 src/controllers/todo_controller.py 中实现TodoController(连接UI和Service,处理回车、点击、右键、分页事件,更新UI)
 
 #### 服务层实现
 
-- [ ] T061 [US2] 在 src/services/todo_service.py 中实现create_task方法(验证内容长度<=100字符、创建TodoTask、保存到数据库、返回TodoTask)
-- [ ] T062 [US2] 在 src/services/todo_service.py 中实现update_task方法(更新content、验证长度、updated_at自动更新、返回TodoTask)
-- [ ] T063 [US2] 在 src/services/todo_service.py 中实现delete_task方法(删除任务、返回True、处理NotFoundError)
-- [ ] T064 [US2] 在 src/services/todo_service.py 中实现toggle_completed方法(切换is_completed、设置/清除completed_at、updated_at自动更新、返回TodoTask)
-- [ ] T065 [US2] 在 src/services/todo_service.py 中实现get_tasks方法(分页查询、排序ORDER BY is_completed DESC, updated_at DESC、返回TaskList字典)
-- [ ] T066 [US2] 在 src/services/todo_service.py 中实现search_tasks方法(关键词搜索content字段、返回任务列表)
+- [X] T061 [US2] 在 src/services/todo_service.py 中实现create_task方法(验证内容长度<=100字符、创建TodoTask、保存到数据库、返回TodoTask)
+- [X] T062 [US2] 在 src/services/todo_service.py 中实现update_task方法(更新content、验证长度、updated_at自动更新、返回TodoTask)
+- [X] T063 [US2] 在 src/services/todo_service.py 中实现delete_task方法(删除任务、返回True、处理NotFoundError)
+- [X] T064 [US2] 在 src/services/todo_service.py 中实现toggle_completed方法(切换is_completed、设置/清除completed_at、updated_at自动更新、返回TodoTask)
+- [X] T065 [US2] 在 src/services/todo_service.py 中实现get_tasks方法(分页查询、排序ORDER BY is_completed DESC, updated_at DESC、返回TaskList字典)
+- [X] T066 [US2] 在 src/services/todo_service.py 中实现search_tasks方法(关键词搜索content字段、返回任务列表)
 
 #### 主窗口集成
 
-- [ ] T067 [US2] 在 src/main.py中集成TodoList组件到主窗口(垂直布局:上方番茄时钟、下方TodoList)
-- [ ] T068 [US2] 在 src/main.py中实现窗口布局自适应(番茄时钟和TodoList按比例分配空间、窗口缩放时调整)
+- [X] T067 [US2] 在 src/main.py中集成TodoList组件到主窗口(垂直布局:上方番茄时钟、下方TodoList)
+- [X] T068 [US2] 在 src/main.py中实现窗口布局自适应(番茄时钟和TodoList按比例分配空间、窗口缩放时调整)
 
 **检查点**: 此时, 用户故事 1 和 2 都应该独立运行
 
@@ -201,20 +201,20 @@
 
 **注意: 先编写这些测试, 确保在实施前它们失败**
 
-- [ ] T069 [P] [US3] 在 tests/unit/test_window_behavior.py 中编写窗口最小尺寸限制的单元测试
-- [ ] T070 [P] [US3] 在 tests/unit/test_window_behavior.py 中编写窗口靠边对齐的单元测试
-- [ ] T071 [P] [US3] 在 tests/integration/test_window_workflow.py 中编写窗口管理完整工作流的集成测试(拖拽、调整、置顶、靠边)
+- [X] T069 [P] [US3] 在 tests/unit/test_window_behavior.py 中编写窗口最小尺寸限制的单元测试
+- [X] T070 [P] [US3] 在 tests/unit/test_window_behavior.py 中编写窗口靠边对齐的单元测试
+- [X] T071 [P] [US3] 在 tests/integration/test_window_workflow.py 中编写窗口管理完整工作流的集成测试(拖拽、调整、置顶、靠边)
 
 ### 用户故事 3 的实施
 
 #### UI组件
 
-- [ ] T072 [P] [US3] 在 src/views/main_window.py 中实现无边框窗口(QMainWindow、Qt.FramelessWindowHint、Qt.WindowSystemMenuHint)
-- [ ] T073 [P] [US3] 在 src/views/main_window.py 中实现窗口拖拽功能(mousePressEvent、mouseMoveEvent、计算窗口位置)
-- [ ] T074 [P] [US3] 在 src/views/main_window.py 中实现窗口大小调整功能(QSizeGrip、拖拽边缘和角落、重写resizeEvent)
-- [ ] T075 [P] [US3] 在 src/views/main_window.py 中实现窗口最小尺寸限制(resizeEvent中检查width/height、阻止缩小到最小值以下)
-- [ ] T076 [P] [US3] 在 src/views/main_window.py 中实现置顶功能(Qt.WindowStaysOnTopHint、切换置顶状态、菜单选项或工具栏按钮)
-- [ ] T077 [P] [US3] 在 src/views/main_window.py 中实现靠边对齐(moveEvent中检测屏幕边缘、自动吸附对齐)
+- [X] T072 [P] [US3] 在 src/views/main_window.py 中实现无边框窗口(QMainWindow、Qt.FramelessWindowHint、Qt.WindowSystemMenuHint)
+- [X] T073 [P] [US3] 在 src/views/main_window.py 中实现窗口拖拽功能(mousePressEvent、mouseMoveEvent、计算窗口位置)
+- [X] T074 [P] [US3] 在 src/views/main_window.py 中实现窗口大小调整功能(QSizeGrip、拖拽边缘和角落、重写resizeEvent)
+- [X] T075 [P] [US3] 在 src/views/main_window.py 中实现窗口最小尺寸限制(resizeEvent中检查width/height、阻止缩小到最小值以下)
+- [X] T076 [P] [US3] 在 src/views/main_window.py 中实现置顶功能(Qt.WindowStaysOnTopHint、切换置顶状态、菜单选项或工具栏按钮)
+- [X] T077 [P] [US3] 在 src/views/main_window.py 中实现靠边对齐(moveEvent中检测屏幕边缘、自动吸附对齐)
 - [ ] T078 [US3] 在 src/main.py中创建QApplication、设置窗口图标(assets/icon.ico)、显示主窗口
 
 #### 控制器层
