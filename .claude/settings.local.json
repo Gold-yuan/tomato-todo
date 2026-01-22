@@ -2,9 +2,37 @@
   "permissions": {
     "allow": [
       "Bash(git:*)",
+      "Bash(cd:*)",
       "Bash(find:*)",
+      "Bash(ls:*)",
+      "Bash(pwd:*)",
+      "Bash(mkdir:*)",
+      "Bash(cp:*)",
+      "Bash(mv:*)",
+      "Bash(cat:*)",
+      "Bash(grep:*)",
+      "Bash(chmod:*)",
+      "Bash(chown:*)",
+      "Bash(docker:*)",
+      "Bash(ssh:*)",
+      "Bash(apt:*)",
+      "Bash(yum:*)",
+      "Bash(systemctl:*)",
+      "Bash(journalctl:*)",
+      "Bash(curl:*)",
+      "Bash(wget:*)",
+      "Bash(ps:*)",
+      "Bash(netstat:*)",
+      "Bash(ping:*)",
+      "Bash(echo:*)",
+      "Bash(which:*)",
+      "Bash(whereis:*)",
       "Bash(.specify/scripts/bash/:*)",
-      "Bash(.specify/scripts/bash/check-prerequisites.sh:*)"
+      "Bash(.specify/scripts/bash/check-prerequisites.sh:*)",
+      "Bash(.specify/scripts/bash/common.sh:*)",
+      "Bash(.specify/scripts/bash/create-new-feature.sh:*)",
+      "Bash(.specify/scripts/bash/update-agent-context:*)",
+      "Bash(.specify/scripts/bash/setup-plan.sh:*)"
     ]
   }
 }
